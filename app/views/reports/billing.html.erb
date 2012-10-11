@@ -87,7 +87,7 @@
               <td style="width:20em">
                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                   <span class="<%= user.status_for_month(@day, expected_days, expected_hours)%>">
-                    <%= link_to h("#{user.name} (#{user.department.internal_id})"), user_month_review_path( user, {:id => :calendar}.merge( date_to_url(@day) ) ) %>
+                    <%= link_to h(user.name_and_department_id), user_month_review_path( user, {:id => :calendar}.merge( date_to_url(@day) ) ) %>
                   </span>
               </td>
               <td style="width:5em"><%= type_name %></td>

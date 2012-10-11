@@ -22,6 +22,10 @@ class User < ActiveRecord::Base
     self.fullname
   end
 
+  def name_and_department_id
+    self.fullname + (self.department ? ' (' + self.department.internal_id.to_s + ')' : '')
+  end
+
   def status_for_period(from_date, to_date, expected_days, expected_hours)
     hours = time_entries.between(from_date, to_date).sum(:hours)
     days = TimeEntry.distinct_dates.between(from_date, to_date).for_user(self).all.size

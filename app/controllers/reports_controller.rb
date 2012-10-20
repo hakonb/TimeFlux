@@ -169,6 +169,8 @@ class ReportsController < ApplicationController
       parse_search_params
       create_search_report
 
+      puts "Step 3: found #{@time_entries.size} entries"
+
       value = (params[:value] && params[:value] == "true")
 
       if params[:mark_as] == 'billed'
@@ -177,6 +179,7 @@ class ReportsController < ApplicationController
         TimeEntry.mark_as_locked(@time_entries, value)
       end
     end
+    params.delete(:action)
     redirect_to( {:action => 'search'}.merge(params) )
   end
 
